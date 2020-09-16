@@ -1,9 +1,9 @@
-pipeline {
-  agent any
-  stages {
+pipeline{
+    agent any
+    stages{
 
-		// Stage 1 Create a Kubernetes Cluster
-		stage('Create kubernetes cluster') {
+        // Stage 1 Create a Kubernetes Cluster
+        stage('Create kubernetes cluster') {
 			steps {
 				withAWS(region:'us-west-2', credentials:'aws_credentials') {
 					sh '''
@@ -25,16 +25,17 @@ pipeline {
 			}
 		}
 
-		// Stage 2 Create a Config file
-		stage('Create config file cluster') {
+        // Stage 2 Create a Config file
+        stage('Create config file cluster') {
 			steps {
-					withAWS(region: 'us-west-2', credentials: 'aws_credentials') {
-						sh '''
-							aws eks --region us-west-2 update-kubeconfig --name microservicesCluster
-						'''
-					}
-
+				withAWS(region:'us-west-2', credentials:'aws_credentials') {
+					sh '''
+						aws eks --region us-west-2 update-kubeconfig --name microservicesCluster
+					'''
+				}
 			}
 		}
-	}
+
+
+    }
 }
