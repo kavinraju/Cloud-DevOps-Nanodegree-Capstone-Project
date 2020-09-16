@@ -5,7 +5,10 @@ pipeline{
             // Stage 1 is linting
             stage('Lint HTML'){
                 steps{
-                    sh 'tidy -q -e *.html'
+                    sh '''
+						tidy -q -e *.html
+						hadolint Dockerfile
+					'''
                 }
             }
 
