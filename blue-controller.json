@@ -22,7 +22,7 @@
              "containers":[
                 {
                    "name":"blue",
-                   "image":"kavinraju98/microservice_capstone",
+                   "image":"microservice_capstone",
                    "ports":[
                       {
                          "name":"http-server",
