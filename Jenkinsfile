@@ -8,7 +8,7 @@ pipeline{
 				withAWS(region:'us-west-2', credentials:'aws_credentials') {
 					sh '''
 						eksctl create cluster \
-						--name microservicesCluster \
+						--name microservicesCluster1 \
 						--version 1.17 \
 						--nodegroup-name standard-workers \
 						--node-type t2.small \
@@ -30,7 +30,7 @@ pipeline{
 			steps {
 				withAWS(region:'us-west-2', credentials:'aws_credentials') {
 					sh '''
-						aws eks --region us-west-2 update-kubeconfig --name microservicesCluster
+						aws eks --region us-west-2 update-kubeconfig --name microservicesCluster1
 					'''
 				}
 			}
