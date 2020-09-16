@@ -25,19 +25,7 @@ pipeline {
 			}
 		}
 
-		// Stage 2 Find the AWS version
-		stage('Find the AWS version'){
-			steps {
-				withAWS(region:'us-west-2', credentials:'aws_credentials') {
-					sh '''
-						which aws &&\
-						aws --version
-					'''
-				}
-			}
-		}
-
-		// Stage 3 Create a Config file
+		// Stage 2 Create a Config file
 		stage('Create config file cluster') {
 			steps {
 					withAWS(region: 'us-west-2', credentials: 'aws_credentials') {
