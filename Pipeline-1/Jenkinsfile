@@ -9,7 +9,7 @@ pipeline{
 					sh '''
 						eksctl create cluster \
 						--name microservicesCluster \
-						--version 1.13 \
+						--version 1.17.9 \
 						--nodegroup-name standard-workers \
 						--node-type t2.small \
 						--nodes 2 \
@@ -20,6 +20,17 @@ pipeline{
 						--zones us-west-2a \
 						--zones us-west-2b \
 						--zones us-west-2c \
+					'''
+				}
+			}
+		}
+
+		stage('Find the AWS version'){
+			steps {
+				withAWS(region:'us-west-2', credentials:'aws_credentials') {
+					sh '''
+						which aws &&\
+						aws --version
 					'''
 				}
 			}
