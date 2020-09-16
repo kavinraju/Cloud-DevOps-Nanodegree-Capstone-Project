@@ -14,7 +14,7 @@ pipeline{
                 steps{
                     sh '''
 						docker pull hadolint/hadolint:latest-debian
-						hadolint Pipeline-2/Dockerfile
+						hadolint --ignore DL3006 Pipeline-2/Dockerfile
 					'''
                 }
             }
