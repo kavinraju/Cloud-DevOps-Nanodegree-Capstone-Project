@@ -9,7 +9,7 @@ pipeline {
 				sh '''
 					eksctl create cluster \
 					--name microservicesCluster \
-					--version 1.17.9 \
+					--version 1.17 \
 					--nodegroup-name standard-workers \
 					--node-type t2.small \
 					--nodes 2 \
