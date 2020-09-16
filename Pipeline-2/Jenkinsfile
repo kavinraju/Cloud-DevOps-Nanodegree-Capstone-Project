@@ -13,6 +13,7 @@ pipeline{
             stage('Lint Dockerfile'){
                 steps{
                     sh '''
+						docker pull hadolint/hadolint:latest-debian
 						hadolint Pipeline-2/Dockerfile
 					'''
                 }
