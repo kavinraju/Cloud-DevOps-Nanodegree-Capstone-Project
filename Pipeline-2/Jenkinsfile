@@ -24,7 +24,8 @@ pipeline{
                 steps{
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
-						docker build -t kavinraju98/microservice_capstone .
+						docker build --tag=microservice_capstone .
+						docker image ls
 					'''
 				    }
                 }
@@ -36,6 +37,7 @@ pipeline{
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
 						docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+						docker tag microservice_capstone kavinraju98/microservice_capstone
 						docker push kavinraju98/microservice_capstone
 					'''
 				    }
