@@ -49,7 +49,7 @@ pipeline{
 				steps {
 					withAWS(region:'us-west-2', credentials:'aws_credentials') {
 						sh '''
-							kubectl config use-context arn:aws:eks:us-west-2:486546486270:cluster/microservicesCluster
+							kubectl config use-context arn:aws:eks:us-west-2:486546486270:cluster/microservicesCluster1
 						'''
 					}
 				}
